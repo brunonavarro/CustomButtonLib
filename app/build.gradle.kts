@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.apps.custombutton"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.apps.custombutton"

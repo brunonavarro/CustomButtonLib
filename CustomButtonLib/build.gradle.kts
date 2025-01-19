@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.apps.custombuttonlib"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 21
@@ -22,7 +22,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.brunonavarro"
                     artifactId = "CustomButtonLib"
-                    version = "1.0.0-beta1"
+                    version = "1.0.0-beta2"
                 }
                 repositories {
                     mavenLocal()
