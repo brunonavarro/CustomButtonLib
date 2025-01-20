@@ -1,0 +1,140 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.brunonavarro",
+    "module": "CustomButtonLib",
+    "version": "1.0.0-beta5",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.9.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "CustomButtonLib-1.0.0-beta5.aar",
+          "url": "CustomButtonLib-1.0.0-beta5.aar",
+          "size": 12268,
+          "sha512": "f16fa9b198d50915499ab4bbfd3edcb5f72f9dd4bee03c0af4441407756e3879a5cc1ea6a9b1ee5f7d0d8fcdc1f168671be9705a5fe7450505a3ccd43ec14b4f",
+          "sha256": "0096ac03448738308caebcaaace80df4a363ad2e74085a0e0eaf2f62709be88a",
+          "sha1": "054bbf13c890641e7368e47a7f1d0196ba694448",
+          "md5": "d0a1df0329e99ce76f5afe607791d094"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose",
+          "module": "compose-bom",
+          "version": {
+            "requires": "2024.10.01"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          },
+          "endorseStrictVersions": true
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.15.0"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.7.0"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui"
+        },
+        {
+          "group": "androidx.compose.material",
+          "module": "material"
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-tooling-preview"
+        },
+        {
+          "group": "androidx.activity",
+          "module": "activity-compose",
+          "version": {
+            "requires": "1.9.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.9.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "CustomButtonLib-1.0.0-beta5.aar",
+          "url": "CustomButtonLib-1.0.0-beta5.aar",
+          "size": 12268,
+          "sha512": "f16fa9b198d50915499ab4bbfd3edcb5f72f9dd4bee03c0af4441407756e3879a5cc1ea6a9b1ee5f7d0d8fcdc1f168671be9705a5fe7450505a3ccd43ec14b4f",
+          "sha256": "0096ac03448738308caebcaaace80df4a363ad2e74085a0e0eaf2f62709be88a",
+          "sha1": "054bbf13c890641e7368e47a7f1d0196ba694448",
+          "md5": "d0a1df0329e99ce76f5afe607791d094"
+        }
+      ]
+    },
+    {
+      "name": "releaseSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "files": [
+        {
+          "name": "CustomButtonLib-1.0.0-beta5-sources.jar",
+          "url": "CustomButtonLib-1.0.0-beta5-sources.jar",
+          "size": 2029,
+          "sha512": "a282ae6dba996af4b17f0e56fc0542d4be32a73bb8f2ccf63249d2519939cef2280dad497758641f9760365cd7514af0bb2d1f1b39f0aefa333d239b7230f0f0",
+          "sha256": "acaaffa62991395310f4488defede0775b0a502d2afd13d7a2f21d1b5a969c78",
+          "sha1": "48f2daabc3678bada0fa1ab78a4775f43d887f93",
+          "md5": "3f5fe4b0f0eb5e6e6a72c6578291604c"
+        }
+      ]
+    }
+  ]
+}
