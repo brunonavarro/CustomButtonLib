@@ -22,7 +22,7 @@ android {
                     from(components["release"])
                     groupId = "com.github.brunonavarro"
                     artifactId = "CustomButtonLib"
-                    version = "1.0.0-beta5"
+                    version = "1.0.0-beta6"
                 }
                 repositories {
                     mavenLocal()
