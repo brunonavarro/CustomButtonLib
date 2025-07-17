@@ -6,11 +6,19 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-material = "1.12.0"
+#material = "1.12.0"
 activity = "1.8.0"
 constraintlayout = "2.2.0"
 jetbrainsKotlinJvm = "1.9.0"
 #maven_publish = "1.0.0"
+
+# Define las versiones de tus bibliotecas
+# Puedes usar la misma versión para BOM y CustomButtonLib si los versionas juntos
+customButtonLib = "1.0.0-beta6" # Versión de tu CustomButtonLib
+material = "1.12.0" # Versión de Material Design
+bomProject-version = "4.2025-07-16" # Versión del BOM mismo
+bomProject-group = "com.github.brunonavarro"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -21,6 +29,22 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# Define tus bibliotecas con un alias amigable
+# Formato: alias = { group = "groupId", name = "artifactId", version.ref = "versionAlias" }
+# O para proyectos locales: alias = { group = "groupId", name = "artifactId", version.ref = "versionAlias" }
+# Pero para el BOM, solo necesitas referenciar las versiones que gestiona.
+
+# Para tu CustomButtonLib
+# Nota: La convención es usar guiones en lugar de camelCase para los nombres en el catálogo
+custom-button-lib = { group = "com.github.brunonavarro", name = "CustomButtonLib", version.ref = "customButtonLib" }
+
+# Para Material Design
+google-android-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# No necesitas definir el BOM en [libraries] para usarlo en el BOM,
+# ya que lo estamos definiendo como el artefacto principal.
+# Solo lo referenciarás en tu app/build.gradle.kts.
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

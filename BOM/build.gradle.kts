@@ -3,8 +3,8 @@ plugins {
     `maven-publish`
 }
 
-group = "com.github.brunonavarro"
-version = "3.2025-07-16"
+group = libs.versions.bomProject.group.get() // Obtén el grupo si lo definiste en versions, o mantenlo directo.
+version = libs.versions.bomProject.version.get() // ¡Así accedes a la versión del BOM!
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -52,60 +52,37 @@ publishing {
                 // Por ejemplo, si tienes un módulo llamado "core" y "ui"
                 withXml {
                     asNode().appendNode("dependencyManagement").appendNode("dependencies").apply {
-                        // Si el módulo 'core' existe en este proyecto:
+                        // Usamos las referencias del catálogo aquí
+                        // Para CustomButtonLib
+                        // Note: project.findProject(":CustomButtonLib") aún se usa si es un módulo local
+                        // para obtener el groupId y artifactId.
+                        // La versión sí la obtenemos del catálogo.
                         val customButtonLibProject = project.findProject(":CustomButtonLib")
                         if (customButtonLibProject != null) {
-                            // Reemplaza "yourcompany.yourapp" con tu groupId
-                            // Reemplaza ":core", ":ui" con los nombres de tus otros módulos
-                            // Si estos módulos ya están publicados en JitPack o Maven Central,
-                            // usa su group y artifact ID completo con su versión.
-                            // Si son módulos de tu mismo proyecto, usa project.group y project.name
                             appendNode("dependency").apply {
                                 appendNode("groupId", customButtonLibProject.group.toString())
                                 appendNode("artifactId", customButtonLibProject.name.toString())
-                                appendNode("version", customButtonLibProject.version.toString())
+                                appendNode("version", libs.versions.customButtonLib.get()) // ¡Versión del catálogo!
+                            }
+                        } else {
+                            // Si CustomButtonLib NO es un módulo local, lo defines directamente con el catálogo
+                            val customButtonLibRef = libs.custom.button.lib.get()
+                            appendNode("dependency").apply {
+                                appendNode("groupId", customButtonLibRef.group)
+                                appendNode("artifactId", customButtonLibRef.name)
+                                appendNode("version", libs.versions.customButtonLib.get())
                             }
                         }
 
-                        // Reemplaza "yourcompany.yourapp" con tu groupId
-                        // Reemplaza ":core", ":ui" con los nombres de tus otros módulos
-                        // Si estos módulos ya están publicados en JitPack o Maven Central,
-                        // usa su group y artifact ID completo con su versión.
-                        // Si son módulos de tu mismo proyecto, usa project.group y project.name
-//                        project(":CustomButtonLib").afterEvaluate {
-//                            appendNode("dependency").apply {
-//                                appendNode("groupId", project.group.toString())
-//                                appendNode("artifactId", project.name.toString())
-//                                appendNode("version", project.version.toString())
-//                            }
-//                        }
-                        /*project(":ui").afterEvaluate {
-                            appendNode("dependency").apply {
-                                appendNode("groupId", project.group.toString())
-                                appendNode("artifactId", project.name.toString())
-                                appendNode("version", project.version.toString())
-                            }
-                        }*/
-
                         // Ejemplo de dependencia externa que podrías gestionar con tu BOM
-
+                        val materialRef = libs.google.android.material.get()
                         appendNode("dependency").apply {
-                            appendNode("groupId", "com.google.android.material")
-                            appendNode("artifactId", "material")
-                            appendNode("version", "1.12.0") // Versión que tu BOM recomienda
+                            appendNode("groupId", materialRef.group)
+                            appendNode("artifactId", materialRef.name)
+                            appendNode("version", libs.versions.material) // Versión que tu BOM recomienda
                         }
                     }
                 }
-
-                // Esta línea es crucial para indicar que este es un BOM.
-                // Le dice a Maven que el "empaquetado" de este artefacto es un "pom".
-                // Y añade el componente del POM mismo como el artefacto principal.
-                // Para esto, el plugin 'java-library' puede ser útil, o puedes crear un componente vacío.
-                // La forma más simple y robusta es solo establecer el packaging y añadir el POM como artefacto.
-                // Para un BOM, no hay "código" o "jar" asociado, solo el POM.
-                //pom.withSourcesJar() // Opcional, pero buena práctica para Maven Central
-                // Si no usas 'java-library', puedes hacer:
-                // artifact(tasks.jar) // O simplemente omitir si es solo un POM
             }
         }
     }
