@@ -53,15 +53,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(platform("com.github.brunonavarro:CustomButtonLib:3.2025-07-16"))
-
-    // --- Now use CustomButtonLib without specifying its version ---
-    // The BOM will provide the version "1.0.0-beta6" for it.
-    implementation("com.github.brunonavarro:CustomButtonLib")
-
-    // --- Use other dependencies managed by your BOM ---
-    // For example, com.google.android.material:material
-    // is in your BOM's dependencyManagement
-    implementation("com.google.android.material:material")
+//    implementation(platform("com.github.brunonavarro:CustomButtonLib:3.2025-07-16"))
+//
+//    // --- Now use CustomButtonLib without specifying its version ---
+//    // The BOM will provide the version "1.0.0-beta6" for it.
+//    implementation("com.github.brunonavarro:CustomButtonLib")
+//
+//    // --- Use other dependencies managed by your BOM ---
+//    // For example, com.google.android.material:material
+//    // is in your BOM's dependencyManagement
+//    implementation("com.google.android.material:material")
 
 }

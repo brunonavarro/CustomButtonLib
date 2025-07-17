@@ -95,6 +95,6 @@ fun Node.addMaterialExternalDependency(){
     appendNode("dependency").apply {
         appendNode("groupId", materialRef.group)
         appendNode("artifactId", materialRef.name)
-        appendNode("version", materialRef.version)//libs.versions.material.get())
+        appendNode("version", libs.versions.material.get())
     }
 }
