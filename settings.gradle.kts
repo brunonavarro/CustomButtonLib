@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "CustomButton"
 include(":app")
 include(":CustomButtonLib")
+include(":BOM")
