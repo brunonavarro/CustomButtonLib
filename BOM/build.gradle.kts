@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.brunonavarro"
-version = "2.2025-07-16"
+version = "3.2025-07-16"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -17,10 +17,10 @@ publishing {
             // Configura tu artefacto para que sea un BOM
             // Esto es crucial: el packaging debe ser "pom"
             // Y el componente debe ser un "bom"
-            artifact(file("src/main/resources/bom.pom")) {
-                extension = "pom"
-                classifier = ""
-            }
+//            artifact(file("src/main/resources/bom.pom")) {
+//                extension = "pom"
+//                classifier = ""
+//            }
 
             pom {
                 // Nombre descriptivo de tu BOM
@@ -96,6 +96,16 @@ publishing {
                         }
                     }
                 }
+
+                // Esta línea es crucial para indicar que este es un BOM.
+                // Le dice a Maven que el "empaquetado" de este artefacto es un "pom".
+                // Y añade el componente del POM mismo como el artefacto principal.
+                // Para esto, el plugin 'java-library' puede ser útil, o puedes crear un componente vacío.
+                // La forma más simple y robusta es solo establecer el packaging y añadir el POM como artefacto.
+                // Para un BOM, no hay "código" o "jar" asociado, solo el POM.
+                //pom.withSourcesJar() // Opcional, pero buena práctica para Maven Central
+                // Si no usas 'java-library', puedes hacer:
+                // artifact(tasks.jar) // O simplemente omitir si es solo un POM
             }
         }
     }
