@@ -26,14 +26,17 @@ publishing {
                 addLicences()
                 addDeveloper()
                 scm {
-                    connection.set("scm:git:github.com/brunonavarro/CustomButtonLib.git")
-                    developerConnection.set("scm:git:ssh://github.com/brunonavarro/CustomButtonLib.git")
+                    connection
+                        .set("scm:git:github.com/brunonavarro/CustomButtonLib.git")
+                    developerConnection
+                        .set("scm:git:ssh://github.com/brunonavarro/CustomButtonLib.git")
                     url.set("https://github.com/brunonavarro/CustomButtonLib")
                 }
                 // Aquí es donde defines tus dependencias gestionadas
                 // Por ejemplo, si tienes un módulo llamado "core" y "ui"
                 withXml {
-                    asNode().appendNode("dependencyManagement").appendNode("dependencies").apply {
+                    asNode().appendNode("dependencyManagement")
+                        .appendNode("dependencies").apply {
                         // Usamos las referencias del catálogo aquí para CustomButtonLib
                         addCustomLibDependency()
                         // Ejemplo de dependencia externa que podrías gestionar con tu BOM
@@ -73,10 +76,11 @@ fun Node.addCustomLibDependency(){
         appendNode("dependency").apply {
             appendNode("groupId", customButtonLibProject.group.toString())
             appendNode("artifactId", customButtonLibProject.name.toString())
-            appendNode("version", libs.versions.customButtonLib.get()) // ¡Versión del catálogo!
+            appendNode("version", libs.versions.customButtonLib.get())
         }
     } else {
-        // Si CustomButtonLib NO es un módulo local, lo defines directamente con el catálogo
+        // Si CustomButtonLib NO es un módulo local,
+        // lo defines directamente con el catálogo
         val customButtonLibRef = libs.custom.button.lib.get()
         appendNode("dependency").apply {
             appendNode("groupId", customButtonLibRef.group)
@@ -91,6 +95,6 @@ fun Node.addMaterialExternalDependency(){
     appendNode("dependency").apply {
         appendNode("groupId", materialRef.group)
         appendNode("artifactId", materialRef.name)
-        appendNode("version", libs.versions.material.get()) // Versión que tu BOM recomienda
+        appendNode("version", materialRef.version)//libs.versions.material.get())
     }
 }

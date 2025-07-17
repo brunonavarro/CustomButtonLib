@@ -60,7 +60,8 @@ dependencies {
     implementation("com.github.brunonavarro:CustomButtonLib")
 
     // --- Use other dependencies managed by your BOM ---
-    // For example, com.google.android.material:material is in your BOM's dependencyManagement
+    // For example, com.google.android.material:material
+    // is in your BOM's dependencyManagement
     implementation("com.google.android.material:material")
 
 }
